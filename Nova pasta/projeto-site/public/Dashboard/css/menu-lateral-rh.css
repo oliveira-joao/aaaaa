@@ -1,0 +1,270 @@
+.menu-lateral{
+    background-color: #CB3360;
+    height:100vh;
+    width:18vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.menu-lateral.active {
+    width: 7vw;
+}
+
+.menu-container{
+    width:85%;
+    height:95%;
+    display:flex;
+    flex-direction: column;
+}
+
+.menu-logo{
+    height:13%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.menu-logo-img{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    padding-bottom:10px;
+}
+
+.menu-logo-img.active{
+    border-bottom: 0px;
+}
+
+.logo-img-class{
+    opacity: 1;
+    height:50px;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+
+.logo-img-class.active{
+    opacity: 0;
+    height: 0px;
+}
+
+.logo-img-class-enxuto{
+    opacity: 0;
+    height: 0px;
+    transition: 0.2s linear;
+}
+
+.logo-img-class-enxuto.active{
+    opacity: 1;
+    height:50px;
+    cursor: pointer;
+}
+
+.menu-bem-vindo{
+    display: flex;
+    height:10%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.bem-vindo-container{
+    width:90%;
+    display:flex;
+    flex-direction: row;
+}
+
+.bem-vindo-icone{
+    width:30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bem-vindo-icone img{
+    height:25px;
+}
+
+.bem-vindo-icone{
+    opacity:1;
+    transition: 0.4s ease-out;
+}
+
+.bem-vindo-icone.active {
+    opacity:0
+}
+
+.bem-vindo-conteudo{
+    opacity: 1;
+    width:70%;
+    font-size:13px;
+    color:white;
+    transition: 0.4s ease-out;
+}
+
+.bem-vindo-conteudo.active{
+    opacity:0;
+    font-size:0px;
+}
+
+.menu-itens{
+    height:62%;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-conteudo{
+    width:100%;
+    height:70%;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.item{
+    width:85%;
+    height:10%;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.item-label1{
+    opacity: 1;
+    height:100%;
+    width:70%;
+    display:flex;
+    align-items: center;
+    color: white;
+    font-weight: 900;
+    font-size: 14px;
+    transition: 0.4s ease-out;
+    cursor: pointer;
+    
+}
+
+.item-label1 label {
+    cursor: pointer;
+}
+
+.item-label1.active{
+    opacity: 0;
+    font-size:0px;
+    width:0px;
+}
+
+.item-label2{
+    opacity: 1;
+    height:100%;
+    width:70%;
+    display:flex;
+    align-items: center;
+    color: white;
+    font-weight: 900;
+    font-size: 14px;
+    transition: 0.4s ease-out;
+}
+
+.item-label2 label {
+    cursor: pointer;
+}
+
+.item-label2.active{
+    opacity: 0;
+    font-size:0px;
+    width:0px;
+}
+
+.item-label3{
+    opacity: 1;
+    height:100%;
+    width:70%;
+    display:flex;
+    align-items: center;
+    color: white;
+    font-weight: 900;
+    font-size: 14px;
+    transition: 0.5s ease-out;
+}
+
+.item-label3.active{
+    opacity: 0;
+    font-size:0px;
+    width:0px;
+}
+
+
+.item-icone{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width:30%;
+    height:100%;
+}
+
+.logout{
+    height:20%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-conteudo{
+    width:100%;
+    height:50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-label{
+    opacity: 1;
+    height:70%;
+    width:55%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size:17px;
+    font-weight: 900;
+    border: 1px solid white;
+    border-radius: 10px;
+    transition: 0.4s linear;
+    cursor:pointer;
+}
+
+.logout-label label{
+    cursor:pointer;
+}
+
+
+.logout-label.active{
+    opacity:0;
+    width: 0px;
+    font-size:0px;
+}
+
+.logout-icone-img{
+    opacity: 0;
+    height: 0px;
+    transition: 0.2s linear;
+}
+
+.logout-icone-img.active{
+    opacity: 1;
+    height:30px;
+    transition: 0.2s linear;
+    cursor:pointer;
+}
+
+#nome_funcionario {
+    text-transform: uppercase;
+}

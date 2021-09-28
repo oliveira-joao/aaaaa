@@ -1,0 +1,10 @@
+Login para conexão na GUI
+-------------------------------------
+login: ubuntu
+senha: smy
+
+Credenciais Docker MySQL
+--------------------------------------
+container: ContainerSmyDB
+banco de dados: SmyDB
+senha: smy

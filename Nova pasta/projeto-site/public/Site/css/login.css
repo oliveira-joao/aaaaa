@@ -1,0 +1,242 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    font-family: 'Exo', sans-serif;
+    color: #424040;
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    width: 1280px;
+    margin: 0 auto;
+    height: 90%;
+}
+
+.header {
+    display: flex;
+    height: 105px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-button {
+    display: flex;
+
+}
+
+.link-index {
+    text-decoration: none;
+}
+
+.back-word {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    width: 60%;
+    font-size: 20px;
+    font-weight: 300;
+    color: #2F68A6;
+}
+
+.logo-Smity {
+    display: flex;
+}
+
+.logo-Smity img {
+    width: 200px;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 535px;
+    height: 430px;
+    border-radius: 35px;
+    border: 1px solid #FD719B;
+}
+
+#form_login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-login {
+    font-family: 'Open sans', sans-serif;
+    width: 40%;
+    font-size: 35px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: -20px;
+    background-color: white;
+    padding: 0px 25px 0px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs ::placeholder {
+    font-size: 16px;
+    color: grey;
+}
+
+.inputs input {
+    margin-top: 45px;
+    padding-left: 25px;
+    background: #F3F3F3;
+    border-radius: 32.987px;
+    border: none;
+    outline: 0;
+    width: 440px;
+    height: 60px;
+}
+
+.radios {
+    margin-top: 25px;
+    width: 100%;
+    height: 22px;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+
+.radio-group {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.radio-group p {
+
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    height: 100%;
+}
+
+.radio-group input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border: 1px solid #FD719B;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio-group input~.checkmark {
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-group input:checked~.checkmark {
+    background-color: #fff;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-group input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-group .checkmark:after {
+    /* top: 9px; */
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #FD719B;
+}
+
+
+.esqueci-senha {
+    margin-top: 30px;
+    font-size: 18px;
+    color: #2F68A6;
+    text-decoration-line: underline;
+}
+
+.button-entrar {
+    width: 240px;
+    height: 60px;
+    background: #FD719B;
+    outline: 0;
+    border-radius: 32.987px;
+    border: none;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: bold;
+    color: white;
+    margin-top: 19px;
+    cursor: pointer;
+}
+
+#background-image {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 600px;
+}
+
+.swal-text {
+    color: #CB3360;
+    font-weight: bold;
+    text-align: center;
+}
+
+.swal-button {
+    background-color: #FD719B;
+    transition: 0.2s ease-in-out;
+}
+
+.swal-button:not([disabled]):hover {
+    background-color: #CB3360;
+}
+
+.swal-footer {
+    text-align: center;
+}

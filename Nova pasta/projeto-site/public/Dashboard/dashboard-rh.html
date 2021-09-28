@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/menu-lateral-rh.css" rel="stylesheet">
+    <link href="css/dashboard-rh.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100&family=Open+Sans:wght@300&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0413e07e08.js" crossorigin="anonymous"></script>
+    <title>Dashboard</title>
+    <link href="img/me-logo-removebg-preview.png" rel="shortcut icon">
+    <script src="../funcoes.js"></script>
+    <script>
+        let usuario;
+        verificar_autenticacao();
+    </script>
+    <script id="ze-snippet"
+        src="https://static.zdassets.com/ekr/snippet.js?key=3eddd854-9339-4637-9bf1-3d639864767f"></script>
+</head>
+
+<body onload="verificar_autenticacao()">
+
+    <div class="menu-lateral">
+        <div class="menu-container">
+            <div class="menu-logo">
+                <div class="menu-logo-img">
+                    <img class="logo-img-class" src="img/logo-black-pink.svg" alt="Logo Smity&ME">
+                    <img class="logo-img-class-enxuto" src="img/logo-enxuto.svg" alt="Logo Enxuto">
+                </div>
+            </div>
+            <div class="menu-bem-vindo">
+                <div class="bem-vindo-container">
+                    <div class="bem-vindo-icone">
+                        <img src="img/user-icon.svg">
+                    </div>
+                    <div class="bem-vindo-conteudo">
+                        <div class="bem-vindo-label">
+                            <label>SEJA BEM VINDO</label>
+                        </div>
+                        <div class="bem-vindo-usuario">
+                            <b id="nome_funcionario" style="color:white"></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-itens">
+                <div class="item-conteudo">
+                    <a class="item" href="dashboard-rh.html">
+                        <div class="item-icone">
+                            <img src="img/dashboard-rh-white.svg">
+                        </div>
+                        <div class="item-label1" style="color:white">
+                            <label>DASHBOARD</label>
+                        </div>
+                    </a>
+                    <a class="item" href="listar-funcionario-rh.html">
+                        <div class="item-icone">
+                            <img src="img/relatos-rh-grey.svg">
+                        </div>
+                        <div class="item-label2" style="color: rgba(255,255,255,0.5); ">
+                            <label>RELATO DOS FUNCIONÁRIOS</label>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="logout">
+                <div class="logout-conteudo">
+                    <div class="logout-label" onclick="logoff()">
+                        <label>LOGOUT</label>
+                    </div>
+                    <div class="logout-icone" onclick="logoff()">
+                        <img class="logout-icone-img" src="img/logout-icon.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="cabecalho-metricas">
+            <strong>
+                <h1>MÉTRICAS DO FUNCIONÁRIO</h1>
+            </strong>
+        </div>
+        <div class="primeiro-grafico">
+            <div class="conteudo-primeiro-grafico">
+                <div class="texto-primeiro-grafico">
+                    <p> Ontem </p>
+                </div>
+
+                <canvas id="myChart" width="600" height="450">
+
+                </canvas>
+                <div class="segundotexto-primeiro-grafico">
+                    <p> SENTIMENTO DA EQUIPE </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="segundo-grafico">
+            <div class="conteudo-segundo-grafico">
+                <div class="texto-segundo-grafico">
+                    <p> CONSULTA POR DIA</p>
+                    <input type="date" id="data">
+                </div>
+                <canvas id="myChart2" width="500" height="300">
+
+                </canvas>
+
+            </div>
+
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js"></script>
+
+
+        <script>
+            let ctx = document.getElementById("myChart");
+
+            let dados = {
+                datasets: [{
+                    data: [0, 0, 0],
+                    backgroundColor: ['#3C8124', '#D6864C', '#E14242']
+                }],
+
+                labels: ['Feliz', 'Neutro', 'Triste']
+            };
+
+            let opcoes = {
+                cutoutPercentage: 40
+            };
+
+
+            let meuDonutChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: dados,
+                options: opcoes
+            });
+
+        </script>
+
+        <div class="graficozinho">
+            <script>
+
+                var ctx2 = document.getElementById('myChart2').getContext('2d');
+
+                var myChart = new Chart(ctx2, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Feliz', 'Neutro', 'Triste'],
+                        datasets: [{
+                            data: [0, 0, 0],
+                            backgroundColor: [
+                                '#3C8124',
+                                '#D6864C',
+                                '#E14242',
+
+                            ],
+                            borderColor: [
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            display: false
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script src="../Dashboard/js/jquery-3.6.0.min.js"></script>
+<script src="js/menu-lateral-rh.js"></script>
+<script src="js/grafico_dash_RH.js"></script>
+<script src="js/chart-utils-rh.js"></script>
+<script>
+
+    function filtrarPorData(data, parametro_data = $('#data').val()) {
+        function filtrarListaPorData({ momentoRelato }) {
+            return !!parametro_data && momentoRelato.indexOf(parametro_data) >= 0
+        }
+
+        return data.filter(filtrarListaPorData)
+    }
+
+    function filtrarSentimentosPorData() {
+        clearInterval(intervalo)
+        obterSentimentosDoDia(respostaLeituraRelatos, myChart, $('#data').val())
+    }
+
+
+
+    function obterSentimentosDoDia(dados, chart, parametro_data = null) {
+        let diaSelecionado
+        if (typeof parametro_data == "number") {
+            var dateOffset = (24 * 60 * 60 * 1000) * parametro_data
+
+            const hoje = new Date();
+            diaSelecionado = new Date();
+
+            diaSelecionado.setTime(hoje.getTime() - dateOffset)
+            diaSelecionado = diaSelecionado.toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" }).substr(0, 10).split("/").reverse().join("-")
+
+        } else {
+            diaSelecionado = parametro_data;
+        }
+        console.log(diaSelecionado, filtrarPorData(dados, diaSelecionado))
+        insertIntoChart(chart, filtrarPorData(dados, diaSelecionado))
+    }
+
+    $(function () {
+        $('#data').on("change", filtrarSentimentosPorData)
+    })
+</script>

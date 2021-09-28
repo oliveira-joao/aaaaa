@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/menu-lateral-rh.css" rel="stylesheet">
+    <link href="css/tela-funcionario-rh.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100&family=Open+Sans:wght@300&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0413e07e08.js" crossorigin="anonymous"></script>
+    <title>Listar Funcionário</title>
+    <link href="img/me-logo-removebg-preview.png" rel="shortcut icon">
+    <script src="../funcoes.js"></script>
+    <script>
+        let usuario;
+        verificar_autenticacao();
+    </script>
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=3eddd854-9339-4637-9bf1-3d639864767f"></script>
+</head>
+
+<body onload="verificar_autenticacao(), obterRelatos()">
+
+    <div class="menu-lateral">
+        <div class="menu-container">
+            <div class="menu-logo">
+                <div class="menu-logo-img">
+                    <img class="logo-img-class" src="img/logo-black-pink.svg" alt="Logo Smity&ME">
+                    <img class="logo-img-class-enxuto" src="img/logo-enxuto.svg" alt="Logo Enxuto">
+                </div>
+            </div>
+            <div class="menu-bem-vindo">
+                <div class="bem-vindo-container">
+                    <div class="bem-vindo-icone">
+                        <img src="img/user-icon.svg">
+                    </div>
+                    <div class="bem-vindo-conteudo">
+                        <div class="bem-vindo-label">
+                            <label>SEJA BEM VINDO</label>
+                        </div>
+                        <div class="bem-vindo-usuario">
+                            <b id="nome_funcionario" style="color:white"></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-itens">
+                <div class="item-conteudo">
+                    <a class="item" href="dashboard-rh.html">
+                        <div class="item-icone">
+                            <img src="img/dashboard-rh-grey.svg">
+                        </div>
+                        <div class="item-label1" style="color: rgba(255,255,255,0.5) ">
+                            <label>DASHBOARD</label>
+                        </div>
+                    </a>
+                    <a class="item" href="listar-funcionario-rh.html">
+                        <div class="item-icone">
+                            <img src="img/relatos-rh-white.svg">
+                        </div>
+                        <div class="item-label2" style="color: white;">
+                            <label>RELATO DOS FUNCIONÁRIOS</label>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="logout">
+                <div class="logout-conteudo">
+                    <div class="logout-label" onclick="logoff()">
+                        <label>LOGOUT</label>
+                    </div>
+                    <div class="logout-icone" onclick="logoff()">
+                        <img class="logout-icone-img" src="img/logout-icon.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="cabecalho-funcionarios">
+            <h1>LISTA DE FUNCIONÁRIOS</h1>
+        </div>
+
+
+        <div class="filtro-relatos">
+            <img src="./img/filter-icon-rh.svg">
+            <div class="barra-filtro">
+                <label>Sentimento</label>
+
+                <select name="sentimento" id="sentimento">
+                    <option value="selecione1">Todos</option>
+                    <option value="feliz">Feliz</option>
+                    <option value="neutro">Neutro</option>
+                    <option value="triste">Triste</option>
+                </select>
+                <label>Consulta por dia</label>
+
+                <input type="date" id="data">
+
+            </div>
+        </div>
+
+
+        <div class="conteudo-principal-funcionario">
+            <div id="incrementar">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script src="../Dashboard/js/jquery-3.6.0.min.js"></script>
+<script src="js/menu-lateral-rh.js"></script>
+<script src="js/listaRelatos.js"></script>
+<script>
+    var obterListaInterval = setInterval(obterRelatos, 3000);
+
+    function filter() {
+        incrementar.innerHTML = ""
+        inserirRelatos()
+    }
+
+    $(function () {
+
+        $("#sentimento").on("change", filter)
+        $('#data').on("change", filter)
+    })
+</script>

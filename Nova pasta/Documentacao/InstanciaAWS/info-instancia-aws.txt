@@ -1,0 +1,21 @@
+Login: vinicius.ferreira@bandtec.com.br
+Senha: #Gf43296982850
+
+Info instância
+Imagem: Ubuntu Server 20.04
+Família: t2
+Tipo: t2.micro
+vCPUs: 1
+Memória: 1
+
+Info volume
+Tipo de acesso: Root
+Dispositivo: /dev/sda1
+Tamanho: 8 GB
+Tipo de volume: General Purpose SSD (gp2)
+
+Grupo de segurança
+Nome do grupo de segurança: launch-wizard-3
+Tipo: SSH
+Protocolo: TCP
+IP: 0.0.0.0/0

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/menu-lateral.css" rel="stylesheet">
+    <link href="css/historico.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100&family=Open+Sans:wght@300&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0413e07e08.js" crossorigin="anonymous"></script>
+    <title>Histórico de leituras</title>
+    <link href="img/me-logo-removebg-preview.png" rel="shortcut icon">
+    <script src="../funcoes.js"></script>
+    <script>
+        let usuario;
+        verificar_autenticacao();
+    </script>
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=3eddd854-9339-4637-9bf1-3d639864767f"></script>
+</head>
+
+<body onload="verificar_autenticacao(), nome(), obterGrafico()">
+
+    <div class="menu-lateral">
+        <div class="menu-container">
+            <div class="menu-logo">
+                <div class="menu-logo-img">
+                    <img class="logo-img-class" src="img/logo-black-pink.svg" alt="Logo Smity&ME">
+                    <img class="logo-img-class-enxuto" src="img/logo-enxuto.svg" alt="Logo Enxuto">
+                </div>
+            </div>
+            <div class="menu-bem-vindo">
+                <div class="bem-vindo-container">
+                    <div class="bem-vindo-icone">
+                        <img src="img/user-icon.svg">
+                    </div>
+                    <div class="bem-vindo-conteudo">
+                        <div class="bem-vindo-label">
+                            <label>SEJA BEM VINDO</label>
+                        </div>
+                        <div class="bem-vindo-usuario">
+                            <b id="nome_funcionario" style="color:#73CAF6"></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-itens">
+                <div class="item-conteudo">
+                    <a href="dashboard-si.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/dashboard-icon.svg">
+                        </div>
+                        <div class="item-label1">
+                            <label>DASHBOARD</label>
+                        </div>
+                    </a>
+                    <a href="listar-funcionario-si.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/funcionario-list.svg">
+                        </div>
+                        <div class="item-label3">
+                            <label>LISTAR<br>FUNCIONÁRIOS</label>
+                        </div>
+                    </a>
+                    <a href="cadastro-si.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/add-user-icon.svg">
+                        </div>
+                        <div class="item-label2">
+                            <label>ADICIONAR<br>FUNCIONÁRIO</label>
+                        </div>
+                    </a>
+                    <!-- <a href="historico.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/icon-leituras-blue.svg">
+                        </div>
+                        <div class="item-label4" style="color:#73CAF6">
+                            <label>HÍSTORICO<br>DE LEITURAS</label>
+                        </div>
+                    </a> -->
+                </div>
+            </div>
+            <div class="logout">
+                <div class="logout-conteudo">
+                    <div class="logout-label" onclick="logoff()">
+                        <label>LOGOUT</label>
+                    </div>
+                    <div class="logout-icone" onclick="logoff()">
+                        <img class="logout-icone-img" src="img/logout-icon.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="cabecalho-funcionarios">
+            <div class="pai">
+                <div class="titulo">
+                    <strong>
+                        <h1>HISTÓRICO DE MÉDIA DE LEITURAS DO FUNCIONÁRIO</h1>
+                    </strong>
+                </div>
+                <div class="usuario">
+                    <img src="img/computer.svg">
+                    <span id="funcionario"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-grafico">
+            <div class="filtro-relatos">
+                <img src="./img/filter-icon-rh.svg">
+                <div class="barra-filtro">
+                    <label>Consulta por dia</label>
+
+                    <input type="date" id="data">
+
+                </div>
+            </div>
+
+            <div class="grafico">
+                <canvas style="width: 100px" class="line-chart">
+
+                </canvas>
+            </div>
+        </div>
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+        <script>
+
+            var ctx = document.getElementsByClassName("line-chart");
+
+            var chartGraph = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"],
+                    datasets: [{
+                        label: "CPU",
+                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        backgroundColor: 'transparent',
+                        borderWidth: 3,
+                        borderColor: '#0097EF',
+                    },
+                    {
+                        label: "MEMÓRIA",
+                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        backgroundColor: 'transparent',
+                        borderWidth: 3,
+                        borderColor: '#CB3360',
+                    },
+                    {
+                        label: "DISCO",
+                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                        backgroundColor: 'transparent',
+                        borderWidth: 3,
+                        borderColor: '#51A135'
+                    }
+                    ]
+                },
+
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                steps: 5,
+                                stepValue: 5,
+                                max: 100
+                            }
+                        }]
+                    }
+                }
+
+            });
+        </script>
+    </div>
+
+</body>
+
+</html>
+
+<script src="../Dashboard/js/jquery-3.6.0.min.js"></script>
+<script src="js/menu-lateral.js"></script>
+<script src="js/grafico_dash.js"></script>
+<script src="js/chart-utils.js"></script>
+<script>
+
+    function filtrarRegistroPorData() {
+        parametroData = $('#data').val()
+        insertIntoChart(dadosFuncionario, parametroData)
+    }
+
+    $(function () {
+        $('#data').on("change", filtrarRegistroPorData)
+    })
+
+</script>

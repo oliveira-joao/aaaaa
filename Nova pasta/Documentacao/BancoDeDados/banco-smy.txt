@@ -1,0 +1,59 @@
+Email de acesso: 211-2b-grupo4@bandtec.com.br
+Senha: #Gfgrupo4
+Login banco: smy
+Senha: #Gfgrupo4
+
+CREATE TABLE Empresa (
+idEmpresa INT PRIMARY KEY IDENTITY,
+nomeEmpresa VARCHAR (25),
+cnpj CHAR (18),
+bairro VARCHAR (25),
+uf CHAR (2),
+telefoneEmpresa CHAR (15),
+emailEmpresa VARCHAR (45)
+);
+
+CREATE TABLE Funcionario (
+idFuncionario INT PRIMARY KEY IDENTITY,
+nomeFuncionario VARCHAR (45),
+loginFuncionario VARCHAR (15),
+senhaFuncionario VARCHAR (25),
+emailFuncionario VARCHAR (45),
+telefoneFuncionario CHAR (15),
+permissaoAdmin TINYINT,
+tipoFuncionario TINYINT,
+fkEmpresa INT FOREIGN KEY REFERENCES Empresa(idEmpresa)
+);
+
+CREATE TABLE Relato (
+idRelato INT PRIMARY KEY IDENTITY,
+relatorio VARCHAR (150),
+sentimento VARCHAR (12),
+momentoRelato DATETIME,
+fkFuncionario INT FOREIGN KEY REFERENCES Funcionario(idFuncionario)
+);
+
+CREATE TABLE Computador (
+idComputador INT PRIMARY KEY IDENTITY,
+modelo VARCHAR(50),
+marca VARCHAR(30),
+nomeCPU VARCHAR(100),
+totalRAM DECIMAL(3,1),
+modeloDisco VARCHAR(100),
+totalDisco DECIMAL(5,1),
+sistemaOperacional VARCHAR(30),
+fkFuncionario INT FOREIGN KEY REFERENCES Funcionario(idFuncionario)
+);
+
+CREATE TABLE LeituraHardware (
+idLeitura INT PRIMARY KEY IDENTITY,
+porcentagemUsoCPU INT,
+porcentagemUsoRAM INT,
+porcentagemUsoDisco INT,
+horarioLeitura DATETIME,
+fkComputador INT FOREIGN KEY REFERENCES Computador(idComputador)
+);
+
+======/=================/
+IMPORTANTE, CASO QUEIRA ALTERAR ALGUM CAMPO DA COLUNA, ESSA É A SÍNTAXE
+ALTER TABLE Computador ALTER COLUMN sistemaOperacional VARCHAR (30);

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/menu-lateral.css" rel="stylesheet">
+    <link href="css/listar-funcionario.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100&family=Open+Sans:wght@300&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0413e07e08.js" crossorigin="anonymous"></script>
+    <title>Listar Funcionário</title>
+    <link href="img/me-logo-removebg-preview.png" rel="shortcut icon">
+    <script src="../funcoes.js"></script>
+    <script>
+        let usuario;
+        verificar_autenticacao();
+    </script>
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=3eddd854-9339-4637-9bf1-3d639864767f"></script>
+</head>
+
+<body onload="verificar_autenticacao(), obterLista(), obterCriticidade()">
+
+    <div class="menu-lateral">
+        <div class="menu-container">
+            <div class="menu-logo">
+                <div class="menu-logo-img">
+                    <img class="logo-img-class" src="img/logo-black-pink.svg" alt="Logo Smity&ME">
+                    <img class="logo-img-class-enxuto" src="img/logo-enxuto.svg" alt="Logo Enxuto">
+                </div>
+            </div>
+            <div class="menu-bem-vindo">
+                <div class="bem-vindo-container">
+                    <div class="bem-vindo-icone">
+                        <img src="img/user-icon.svg">
+                    </div>
+                    <div class="bem-vindo-conteudo">
+                        <div class="bem-vindo-label">
+                            <label>SEJA BEM VINDO</label>
+                        </div>
+                        <div class="bem-vindo-usuario">
+                            <b id="nome_funcionario" style="color:#73CAF6"></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-itens">
+                <div class="item-conteudo">
+                    <a href="dashboard-si.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/dashboard-icon.svg">
+                        </div>
+                        <div class="item-label1">
+                            <label>DASHBOARD</label>
+                        </div>
+                    </a>
+                    <a href="listar-funcionario-si.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/funcionario-list-blue.svg">
+                        </div>
+                        <div class="item-label3" style="color:#73CAF6">
+                            <label>LISTAR<br>FUNCIONÁRIOS</label>
+                        </div>
+                    </a>
+                    <a href="cadastro-si.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/add-user-icon.svg">
+                        </div>
+                        <div class="item-label2">
+                            <label>ADICIONAR<br>FUNCIONÁRIO</label>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="logout">
+                <div class="logout-conteudo">
+                    <div class="logout-label" onclick="logoff()">
+                        <label>LOGOUT</label>
+                    </div>
+                    <div class="logout-icone" onclick="logoff()">
+                        <img class="logout-icone-img" src="img/logout-icon.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="cabecalho-funcionarios">
+            <strong>
+                <h1>LISTA DE FUNCIONÁRIOS</h1>
+            </strong>
+        </div>
+        <div class="filtro-pesquisa">
+            <div class="container-filtro-pesquisa">
+                <div class="conteudo-filtro"> 
+                    <div class="input-filtro">
+                        <input id="filtro">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="conteudo-principal-funcionario">
+            <div id="incrementar">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script src="../Dashboard/js/jquery-3.6.0.min.js"></script>
+<script src="js/menu-lateral.js"></script>
+<script src="js/listaFuncionario.js"></script>
+<script>
+    var obterListaInterval = setInterval(obterLista, 1000);
+    var obterCriticidadeInterval = setInterval(obterCriticidade, 1000);
+
+    $(function () {
+
+        $("#filtro").keyup(function () {
+            // clearInterval(obterListaInterval);
+            var texto = $(this).val();
+            // console.log(texto)
+
+            $(".conteudo-quadrado").each(function (index, elem) {
+                var item = $(elem)
+
+                var resultado = item.text().toUpperCase().indexOf(texto.toUpperCase());
+                // console.log(resultado)
+
+                if (resultado < 0) {
+                    item.fadeOut();
+                } else {
+                    item.fadeIn();
+                }
+            });
+
+            if ($("#filtro").val().length === 0) {
+                obterListaInterval = setInterval(obterLista, 1000)
+            }
+
+
+        });
+    });
+</script>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/cadastro.css" rel="stylesheet">
+    <link href="css/menu-lateral.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100&family=Open+Sans:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="../Site/img/me-logo-removebg-preview.png">
+    <title>Adicionar Funcionário</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/mascara.js"></script>
+    <script src="js/mascara.min.js"></script>
+    <script src="../funcoes.js"></script>
+    <script>
+        let usuario;
+        verificar_autenticacao();
+    </script>
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=3eddd854-9339-4637-9bf1-3d639864767f"></script>
+</head>
+
+<body onload="verificar_autenticacao(), associarEmpresa()">
+
+    <div class="menu-lateral">
+        <div class="menu-container">
+            <div class="menu-logo">
+                <div class="menu-logo-img">
+                    <img class="logo-img-class" src="img/logo-black-pink.svg" alt="Logo Smity&ME">
+                    <img class="logo-img-class-enxuto" src="img/logo-enxuto.svg" alt="Logo Enxuto">
+                </div>
+            </div>
+            <div class="menu-bem-vindo">
+                <div class="bem-vindo-container">
+                    <div class="bem-vindo-icone">
+                        <img src="img/user-icon.svg">
+                    </div>
+                    <div class="bem-vindo-conteudo">
+                        <div class="bem-vindo-label">
+                            <label>SEJA BEM VINDO</label>
+                        </div>
+                        <div class="bem-vindo-usuario">
+                            <b id="nome_funcionario" style="color:#73CAF6"></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-itens">
+                <div class="item-conteudo">
+                    <a href="dashboard-si.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/dashboard-icon.svg">
+                        </div>
+                        <div class="item-label1">
+                            <label>DASHBOARD</label>
+                        </div>
+                    </a>
+                    <a href="listar-funcionario-si.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/funcionario-list.svg">
+                        </div>
+                        <div class="item-label3">
+                            <label>LISTAR<br>FUNCIONÁRIOS</label>
+                        </div>
+                    </a>
+                    <a href="cadastro-si.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/add-user-blue.svg">
+                        </div>
+                        <div class="item-label2" style="color:#73CAF6">
+                            <label>ADICIONAR<br>FUNCIONÁRIO</label>
+                        </div>
+                    </a>
+                    <!-- <a href="historico.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/icon-leituras.svg">
+                        </div>
+                        <div class="item-label4">
+                            <label>HÍSTORICO<br>DE LEITURAS</label>
+                        </div>
+                    </a> -->
+                </div>
+            </div>
+            <div class="logout">
+                <div class="logout-conteudo">
+                    <div class="logout-label" onclick="logoff()">
+                        <label>LOGOUT</label>
+                    </div>
+                    <div class="logout-icone" onclick="logoff()">
+                        <img class="logout-icone-img" src="img/logout-icon.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="cabecalho">
+        </div>
+
+        <div class="conteudo-principal">
+            <div class="conteudo-A">
+                <div class="conteudo-A-form">
+                    <div class="conteudo-A-form-titulo">
+                        <label>CADASTRO</label>
+                    </div>
+                    <div class="conteudo-A-form-subtitulo">
+                        <div class="conteudo-A-form-subtitulo-linha">
+                            <div class="linha">
+                                Campo Fantasma
+                            </div>
+                        </div>
+                        <div class="conteudo-A-form-subtitulo-label">
+                            FUNCIONÁRIO
+                        </div>
+                        <div class="conteudo-A-form-subtitulo-linha">
+                            <div class="linha">
+                                Campo Fantasma
+                            </div>
+                        </div>
+                    </div>
+                    <form class="conteudo-A-form-inputs" id="form_cadastro" method="post">
+                        <div class="form-input-content-A">
+                            <label>NOME:</label>
+                            <input class="input" id="inputNome" type="text" name="nomeFuncionario" required>
+                        </div>
+
+                        <div class="form-input-content-B">
+                            <label>EMAIL:</label>
+                            <input class="input" id="inputEmail" type="email" name="emailFuncionario" required>
+                        </div>
+
+                        <div class="form-input-content-A">
+                            <label>LOGIN:</label>
+                            <input class="input" id="inputLogin" type="text" name="loginFuncionario" required>
+                        </div>
+
+                        <div class="form-input-content-B">
+                            <label>TELEFONE:</label>
+                            <input class="input" id="inputTelefone" type="text" name="telefoneFuncionario"
+                                onkeyup="mascara('(##) #####-####',this,event,true)" maxlength="15" required>
+                        </div>
+
+                        <div class="form-input-content-A">
+                            <label>SENHA:</label>
+                            <input class="input" id="inputSenha" type="password" name="senhaFuncionario" required>
+                        </div>
+
+                        <div class="form-input-content-B">
+                            <label>CONFIRMAR SENHA:</label>
+                            <input class="input" id="inputConfirmarSenha" type="password" required>
+                        </div>
+                        <!--Inputs não exibíveis para inserção no Banco-->
+                        <div style="display:none">
+                            <input id="fkEmpresa" name="fkEmpresa">
+                        </div>
+                        <!-- -------------------------------------------->
+                    </form>
+                    <div class="conteudo-A-form-button">
+                        <button id="button" type="submit" onclick="cadastrar()">CADASTRAR</button>
+                    </div>
+                </div>
+            </div>
+            <div class="conteudo-B">
+                <div class="conteudo-B-imagem">
+                    <img src="img/add-user-image.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<script src="js/menu-lateral.js"></script>
+<script>
+    function cadastrar() {
+
+        if (!(inputNome.value && inputEmail.value && inputLogin.value &&
+            inputTelefone.value && inputSenha.value && inputConfirmarSenha.value)) {
+            swal("Erro ao cadastrar!", "Por favor, preencher todas as informações do funcionário.", "error");
+        } else {
+            var formulario = new URLSearchParams(new FormData(form_cadastro));
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                body: formulario
+            }).then(function (response) {
+
+                if (response.ok) {
+                    // window.location.href = 'login.html';
+                    console.log("Cadastrado com sucesso!")
+                    swal("Funcionário cadastrado!", "", "success");
+                    limparCampos();
+
+                } else {
+                    console.log('Erro de cadastro!');
+                    response.text().then(function (resposta) {
+                        swal("Erro de inserção no banco de dados!", "", "error");
+                    });
+                }
+            });
+
+            return false;
+        }
+    }
+
+    function associarEmpresa() {
+        fkEmpresa.value = sessionStorage.fk_empresa_meuapp;
+    }
+
+    function limparCampos() {
+        inputNome.value = "";
+        inputEmail.value = "";
+        inputLogin.value = "";
+        inputTelefone.value = "";
+        inputSenha.value = "";
+        inputConfirmarSenha.value = "";
+    }
+</script>

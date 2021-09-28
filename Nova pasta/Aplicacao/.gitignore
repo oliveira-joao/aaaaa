@@ -1,0 +1,11 @@
+/target/
+target
+# Ignora arquivos de log
+**/*_log
+**/*log
+**/_log
+**/log
+**/_log*
+**/log*
+log*
+*_log*

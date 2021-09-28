@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/login.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100&family=Open+Sans:wght@300,700&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="../Site/img/me-logo-removebg-preview.png" />
+    <title>Login</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body onload="limparStorage()">
+    <div class="container">
+
+        <div class="header">
+            <a href="index.html" class="link-index">
+                <div class="back-button">
+                    <div class="button-img">
+                        <img src="img/voltar-login.svg" href="index.html">
+                    </div>
+                    <div class="back-word">
+                        <p>VOLTAR</p>
+                    </div>
+                </div>
+            </a>
+            <div class="logo-Smity">
+                <img src="img/LogoTexto.svg">
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="login">
+                <form id="form_login" method="post">
+
+                    <p class="title-login">Login</p>
+                    <div class="inputs">
+                        <input name="loginFuncionario" type="text" placeholder="Usuário">
+                        <input name="senhaFuncionario" type="password" placeholder="Senha">
+                    </div>
+
+                    <div class="radios">
+                        <label class="radio-group">
+                            <input type="radio" name="funcionario" id="radio_gestor">
+                            <span class="checkmark"></span>
+                            <p>Gestor de S.I.</p>
+                        </label>
+
+                        <label class="radio-group">
+                            <input type="radio" name="funcionario" id="radio_rh">
+                            <span class="checkmark"></span>
+                            <p>RH</p>
+                        </label>
+                    </div>
+
+                </form>
+
+                <p class="esqueci-senha">Esqueci minha senha</p>
+                <button class="button-entrar" onclick="entrar()">ENTRAR</button>
+            </div>
+
+        </div>
+
+        <img id="background-image" src="img/Login_img.svg">
+
+
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    function entrar() {
+        var formulario = new URLSearchParams(new FormData(form_login));
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+            if (resposta.ok) {
+                if (!(radio_gestor.checked || radio_rh.checked)) {
+                    swal("Login inválido", "Tipo de usuário não informado!", "error");
+                } else {
+                    resposta.json().then(json => {
+                        sessionStorage.login_usuario_meuapp = json.loginFuncionario;
+                        sessionStorage.nome_usuario_meuapp = json.nomeFuncionario;
+                        sessionStorage.permissao_admin_meuapp = json.permissaoAdmin;
+                        sessionStorage.tipo_funcionario_meuapp = json.tipoFuncionario;
+                        sessionStorage.fk_empresa_meuapp = json.fkEmpresa;
+                        console.log(json.permissaoAdmin);
+
+                        if (sessionStorage.permissao_admin_meuapp == "1") {
+                            if (radio_gestor.checked && (sessionStorage.tipo_funcionario_meuapp == "0")) {
+                                window.location.href = '../Dashboard/dashboard-si.html';
+                            } else if (radio_rh.checked && (sessionStorage.tipo_funcionario_meuapp == "1")) {
+                                window.location.href = '../Dashboard/dashboard-rh.html';
+                            } else {
+                                swal("Tipo de usuário inválido", "Permissão de acesso negada!", "error");
+                            }
+                        } else {
+                            swal("Usuário inválido", "Permissão de acesso negada!", "error");
+                        };
+                    });
+                }
+            } else {
+                console.log('Erro de login!');
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    swal("Usuário não encontrado", "Login e/ou senha incorreta!", "error");
+                });
+            };
+            return false;
+        });
+    }
+
+    function limparStorage() {
+        sessionStorage.clear();
+    }
+</script>

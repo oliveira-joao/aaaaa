@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.conteudo-faq {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:500px;
+    /* background-color: red; */
+}
+
+.conteudo-faq-um {
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width:50%;
+    height: 100%;
+    /* background-color: pink; */
+}
+
+.conteudo-faq-dois {
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width:50%;
+    height: 100%;
+    /* background-color: royalblue; */
+}
+
+.perguntas-faq {
+    width: 80%;
+    height: 100%;
+    margin-top: 5%;
+}
+
+.section-faq {
+    background-color: white;
+    padding: 0px 0px 80px 0px;
+}
+.container-faq {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.container-faq h2 {
+    color: black;
+    position: relative;
+    width: 23rem;
+}
+.container-faq h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 12px;
+    width: 67px;
+    height: 2px;
+    background-color: black;
+}
+.accordion {
+    width: 100%;
+    padding: 0 5px;
+    border: 1px solid #73CAF6;
+    cursor: pointer;
+    border-radius: 50px;
+    display: flex;
+    margin: 10px 0;
+    align-items: center;
+}
+.accordion .icon-faq {
+    margin: 0 10px 0 0;
+    width: 15px;
+    height: 15px;
+    background: url(https://ecentiva.com.br/wp-content/uploads/2018/05/017-plus.png) no-repeat 8px 7px #FD719B; 
+    border-radius: 50%;
+    float: left;
+    transition: all .5s ease-in;  
+}
+.accordion h5 {
+    font-size: 18px;
+    margin: 0;
+    padding: 3px 0 0 0;
+    font-weight: normal;
+    color: black; 
+    transition: all .5s ease-in;
+}
+
+.accordion p{
+    margin: 0;
+}
+
+.active .icon-faq {
+    background: url(../img/icone-faq.png) 8px -25px #fff;
+}
+.active {
+    background-color: #2F68A6;
+    color: #fff;
+}
+.active h5 {
+    color: #fff;
+}
+.painel { 
+    padding: 0 15px;
+    border-left: 1px solid #07BEB8;
+    margin-left: 25px;
+    font-size: 14px;
+    text-align: justify;
+    overflow: hidden;
+    max-height: 0px;
+    transition: all .5s ease-in;
+}

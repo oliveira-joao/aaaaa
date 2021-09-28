@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/menu-lateral.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100&family=Open+Sans:wght@300&display=swap"
+        rel="stylesheet">
+    <link href="img/me-logo-removebg-preview.png" rel="shortcut icon">
+
+    <title>Dashboard</title>
+    <script src="../funcoes.js"></script>
+    <script>
+        let usuario;
+        verificar_autenticacao();
+    </script>
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=3eddd854-9339-4637-9bf1-3d639864767f"></script>
+</head>
+
+<body onload="verificar_autenticacao(), obterNomeFunc()">
+    <div class="menu-lateral">
+        <div class="menu-container">
+            <div class="menu-logo">
+                <div class="menu-logo-img">
+                    <img class="logo-img-class" src="img/logo-black-pink.svg" alt="Logo Smity&ME">
+                    <img class="logo-img-class-enxuto" src="img/logo-enxuto.svg" alt="Logo Enxuto">
+                </div>
+            </div>
+            <div class="menu-bem-vindo">
+                <div class="bem-vindo-container">
+                    <div class="bem-vindo-icone">
+                        <img src="img/user-icon.svg">
+                    </div>
+                    <div class="bem-vindo-conteudo">
+                        <div class="bem-vindo-label">
+                            <label>SEJA BEM VINDO</label>
+                        </div>
+                        <div class="bem-vindo-usuario">
+                            <b id="nome_funcionario" style="color:#73CAF6"></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-itens">
+                <div class="item-conteudo">
+                    <a href="dashboard-si.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/dashboard-icon-blue.svg">
+                        </div>
+                        <div class="item-label1" style="color:#73CAF6">
+                            <label>DASHBOARD</label>
+                        </div>
+                    </a>
+                    <a href="listar-funcionario-si.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/funcionario-list.svg">
+                        </div>
+                        <div class="item-label3">
+                            <label>LISTAR<br>FUNCIONÁRIOS</label>
+                        </div>
+                    </a>
+                    <a href="cadastro-si.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/add-user-icon.svg">
+                        </div>
+                        <div class="item-label2">
+                            <label>ADICIONAR<br>FUNCIONÁRIO</label>
+                        </div>
+                    </a>
+                    <!-- <a href="historico.html" class="item">
+                        <div class="item-icone">
+                            <img src="img/icon-leituras.svg">
+                        </div>
+                        <div class="item-label4">
+                            <label>HÍSTORICO<br>DE LEITURAS</label>
+                        </div>
+                    </a> -->
+                </div>
+            </div>
+            <div class="logout">
+                <div class="logout-conteudo">
+                    <div class="logout-label" onclick="logoff()">
+                        <label>LOGOUT</label>
+                    </div>
+                    <div class="logout-icone" onclick="logoff()">
+                        <img class="logout-icone-img" src="img/logout-icon.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="cabecalho">
+            <div class="titulo-monitoramento">
+                <label>MONITORAMENTO DE MÁQUINAS</label>
+            </div>
+            <div class="filtro">
+                <div class="filtro-label">
+                    <div class="filtro-img">
+                        <img src="./img/filtroIcon.svg" alt="">
+                    </div>
+                    <div class="filtro-titulo">
+                        <label>Filtro</label>
+                    </div>
+                </div>
+                <button onclick="todos()" id="todos_button">Todos</button>
+                <button onclick="critico()" id="critico_button">Crítico</button>
+                <button onclick="moderado()" id="moderado_button">Moderado</button>
+                <button onclick="ok()" id="ok_button">Ok</button>
+            </div>
+            <div class="conteudo-A-form-subtitulo-linha">
+                <div class="linha">
+                    Campo Fantasma
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container-computador">
+            <div class="monitoramento-comp" id="incrementar">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script src="js/menu-lateral.js"></script>
+<script src="js/funcionario_dash.js"></script>
+<script src="js/grafico_dash.js"></script>

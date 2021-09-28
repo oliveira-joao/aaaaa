@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open sans', sans-serif;
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    width: 82vw;
+    height: 100vh;
+    /* background-color: violet; */
+
+}
+
+.container.active {
+    width: 93vw;
+    height: 100vh;
+}
+
+/* INÍCIO - CABEÇALHO */
+.cabecalho-funcionarios {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 13%;
+
+}
+
+h1 {
+    align-items: center;
+    font-family: 'Open sans', sans-serif;
+    padding-top: 0.7em;
+    font-weight: bold;
+    color: #434343;
+    font-size: 35px;
+}
+
+/* FIM - CABEÇALHO */
+
+.filtro-relatos {
+    display: flex;
+    width: 100%;
+    height: 7%;
+    margin-bottom: 2%;
+    align-items: center;
+    justify-content: center;
+}
+
+.barra-filtro {
+    height: 100%;
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid #434343;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-left: 1%;
+    padding: 1%;
+}
+
+.barra-filtro label {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.barra-filtro select {
+    background-color: transparent;
+    border: 1px solid #434343;
+    border-radius: 4px;
+    font-size: 15px;
+    width: 20%;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.barra-filtro input {
+    background-color: transparent;
+    border: 1px solid #434343;
+    border-radius: 4px;
+    font-size: 15px;
+    width: 25%;
+    height: 100%;
+    padding-left: 3px;
+}
+
+/* DIV DO CONTEUDO PRINCIPAL */
+.conteudo-principal-funcionario {
+    width: 65vw;
+    height: 73vh;
+    margin: 0 auto;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* DIV DO CONTEUDO PRINCIPAL */
+
+/* INICIO BARRA DE ROLAGEM */
+/* width */
+::-webkit-scrollbar {
+    width: 1.7vw;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    transform: matrix(0, 1, 1, 0, 0, 0);
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #CCCCCC;
+    border-radius: 25px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #fd719b;
+
+}
+
+/* FIM BARRA DE ROLAGEM */
+
+
+/* DIV QUADRADOS */
+
+.conteudo-quadrado {
+    width: 97%;
+    display: flex;
+    height: 100px;
+    margin-top: 1em;
+    border: 1.3px solid #434343;
+    box-sizing: border-box;
+}
+
+.smy {
+    display: flex;
+    justify-content: center;
+    width: 13%;
+    align-items: center;
+
+}
+
+#icon-smy {
+    align-items: center;
+
+}
+
+.relato-box {
+    height: 100%;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+.relato-box div {
+    width: 100%;
+}
+
+.titulo-relato {
+    display: flex;
+    width: 100%;
+    height: 30%;
+
+}
+
+.titulo-relato h5 {
+    margin-top: 5px;
+    font-size: 20px;
+    color: #CB3360;
+}
+
+.relato {
+    font-weight: bold;
+    height: 70%;
+    width: 50%;
+}
+
+.relato label {
+    word-wrap: break-word;
+    font-size: 15px;
+}
+
+
+.alerta-sentimento {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+}
+
+.sentimento {
+    width: 65%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sentimento-img img {
+    width: 68px;
+}
+
+.sentimento label {
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.sentimento-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 35%;
+}
+
+/* FIM DIV QUADRADOS */
